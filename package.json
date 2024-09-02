@@ -1,0 +1,28 @@
+{
+  "name": "@nodecfdi/prettier-config",
+  "version": "1.1.1",
+  "description": "Prettier config for NodeCfdi projects",
+  "keywords": [
+    "prettier",
+    "nodecfdi"
+  ],
+  "private": false,
+  "author": "Fernando Isidro <luffynando@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "main": "./prettier.config.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": "./prettier.config.js"
+  },
+  "files": [
+    "index.d.ts",
+    "prettier.config.js"
+  ],
+  "scripts": {},
+  "repository": "https://github.com/nodecfdi/tooling-config",
+  "bugs": {
+    "url": "https://github.com/nodecfdi/tooling-config/issues"
+  },
+  "homepage": "https://github.com/nodecfdi/tooling-config"
+}
