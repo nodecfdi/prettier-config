@@ -1,5 +1,6 @@
 # @nodecfdi/prettier-config
 
+<!-- auto-changelog-above -->
 ## 1.1.1
 
 ### Patch Changes - Fix types

@@ -1,28 +1,65 @@
 {
   "name": "@nodecfdi/prettier-config",
+  "description": "Configuración Prettier para proyectos NodeCfdi",
   "version": "1.1.1",
-  "description": "Prettier config for NodeCfdi projects",
-  "keywords": [
-    "prettier",
-    "nodecfdi"
-  ],
-  "private": false,
-  "author": "Fernando Isidro <luffynando@gmail.com>",
-  "license": "MIT",
   "type": "module",
   "main": "./prettier.config.js",
   "types": "./index.d.ts",
-  "exports": {
-    ".": "./prettier.config.js"
-  },
   "files": [
     "index.d.ts",
     "prettier.config.js"
   ],
-  "scripts": {},
-  "repository": "https://github.com/nodecfdi/tooling-config",
-  "bugs": {
-    "url": "https://github.com/nodecfdi/tooling-config/issues"
+  "exports": {
+    ".": "./prettier.config.js"
   },
-  "homepage": "https://github.com/nodecfdi/tooling-config"
+  "scripts": {
+    "prepare": "is-in-ci || husky",
+    "changelog": "auto-changelog -p && git add CHANGELOG.md",
+    "release": "np",
+    "version": "pnpm run changelog"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "auto-changelog": "^2.4.0",
+    "husky": "^9.1.5",
+    "is-in-ci": "^1.0.0",
+    "np": "^10.0.7"
+  },
+  "author": "Fernando Isidro <luffynando@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/nodecfdi/prettier-config",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodecfdi/prettier-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nodecfdi/prettier-config/issues"
+  },
+  "keywords": [
+    "prettier",
+    "nodecfdi",
+    "shared",
+    "config"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "packageManager": "pnpm@9.9.0",
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "auto-changelog": {
+    "template": "keepachangelog",
+    "hide-credit": true
+  },
+  "np": {
+    "message": "chore(release): :tada: %s",
+    "tag": "latest",
+    "branch": "main",
+    "yolo": true
+  }
 }
