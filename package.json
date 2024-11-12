@@ -106,6 +106,9 @@
   },
   "tshy": {
     "selfLink": false,
+    "dialects": [
+      "esm"
+    ],
     "exports": {
       ".": "./src/base.ts",
       "./adonis": "./src/adonis.ts",
