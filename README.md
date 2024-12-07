@@ -36,10 +36,21 @@ pnpm add -D prettier @nodecfdi/prettier-config
 
 Para habilitar estás reglas, puedes simplemente agregar la propiedad `prettier` en tu `package.json` y referenciar está configuración compartida como se muestra a continuación:
 
+Para la configuración base:
+
 ```json
 {
   ///...
   "prettier": "@nodecfdi/prettier-config"
+}
+```
+
+Ó bien, la configuracion para librerias:
+
+```json
+{
+  ///...
+  "prettier": "@nodecfdi/prettier-config/pkg"
 }
 ```
 
