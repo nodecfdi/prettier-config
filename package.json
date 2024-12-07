@@ -3,56 +3,50 @@
   "description": "Configuración Prettier para proyectos NodeCfdi",
   "version": "1.3.1",
   "type": "module",
-  "module": "./dist/esm/base.js",
+  "module": "./build/base.js",
+  "types": "./build/base.d.ts",
   "files": [
-    "dist"
+    "build"
   ],
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/esm/base.d.ts",
-        "default": "./dist/esm/base.js"
-      }
-    },
-    "./adonis": {
-      "import": {
-        "types": "./dist/esm/adonis.d.ts",
-        "default": "./dist/esm/adonis.js"
+        "types": "./build/base.d.ts",
+        "default": "./build/base.js"
       }
     },
     "./pkg": {
       "import": {
-        "types": "./dist/esm/pkg.d.ts",
-        "default": "./dist/esm/pkg.js"
+        "types": "./build/pkg.d.ts",
+        "default": "./build/pkg.js"
       }
     }
   },
   "scripts": {
     "prepare": "is-in-ci || husky",
     "typecheck": "tsc --noEmit",
+    "clean": "del-cli build",
     "changelog": "auto-changelog -p && git add CHANGELOG.md",
-    "prebuild": "pnpm typecheck",
-    "build": "tshy",
+    "prebuild": "pnpm run typecheck",
+    "build": "pnpm run clean && tsup-node",
     "release": "np",
     "version": "pnpm run build && pnpm run changelog"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@nodecfdi/tsconfig": "^1.7.2",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@nodecfdi/tsconfig": "^1.7.3",
     "auto-changelog": "^2.5.0",
-    "husky": "^9.1.6",
+    "del-cli": "^6.0.0",
+    "husky": "^9.1.7",
     "is-in-ci": "^1.0.0",
-    "np": "^10.0.7",
-    "prettier": "^3.3.3",
-    "tshy": "^3.0.2",
-    "typescript": "^5.6.3"
-  },
-  "dependencies": {
-    "prettier-edgejs": "^0.2.33"
+    "np": "^10.1.0",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "prettier": "^3.3.3"
+    "prettier": "^3.4.2"
   },
   "author": "Fernando Isidro <luffynando@gmail.com>",
   "license": "MIT",
@@ -70,12 +64,15 @@
     "shared",
     "config"
   ],
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@9.15.0",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
-  "packageManager": "pnpm@9.12.3",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
@@ -90,15 +87,15 @@
     "branch": "main",
     "yolo": true
   },
-  "tshy": {
-    "selfLink": false,
-    "dialects": [
-      "esm"
+  "tsup": {
+    "entry": [
+      "./src/base.ts",
+      "./src/pkg.ts"
     ],
-    "exports": {
-      ".": "./src/base.ts",
-      "./adonis": "./src/adonis.ts",
-      "./pkg": "./src/pkg.ts"
-    }
+    "outDir": "./build",
+    "clean": false,
+    "format": "esm",
+    "dts": true,
+    "target": "esnext"
   }
 }
