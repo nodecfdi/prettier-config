@@ -33,7 +33,7 @@
     "version": "pnpm run build && pnpm run changelog"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.0",
+    "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
     "@nodecfdi/tsconfig": "^1.7.3",
     "auto-changelog": "^2.5.0",
@@ -67,7 +67,7 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@9.15.1",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
